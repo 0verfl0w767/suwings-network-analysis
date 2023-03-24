@@ -59,8 +59,13 @@ const getResponse = async () => {
   const rawXML = await response.text();
   const rawJSON = xml2json(rawXML);
 
+  fs.writeFile("network.xml", rawXML, (err) => {
+    if (err) {
+      console.log(err);
+    }
+  });
   fs.writeFile(
-    "test.json",
+    "network.json",
     JSON.stringify(JSON.parse(rawJSON), null, 2),
     (err) => {
       if (err) {
