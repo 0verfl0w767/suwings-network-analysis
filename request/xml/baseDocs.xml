@@ -1,0 +1,97 @@
+<rqM0_F0 task="system.commonTask" action="comSelect" xda="academic.ac.ac03.ac03_20040305_m_M0_F0_xda" con="sudev">
+  <!-- FCLT_GSCH_DIV_CD , 학부대학원구분코드 -->
+  <!--
+  
+  -->
+  <FCLT_GSCH_DIV_CD value=""/>
+  
+  <!-- OPEN_YY , 개설년도 -->
+  <OPEN_YY value=""/>
+  
+  <!-- OPEN_SHTM_CD , 개설학기 -->
+  <!--
+    1학기 정규: 10
+    1학기 계절: 15
+    2학기 정규: 20
+    2학기 계절: 25 
+  -->
+  <OPEN_SHTM_CD value=""/>
+  
+  <!-- COLG_CD , 단과대학 -->
+  <!--
+    신학대학: 00101
+    인문사회대학: 00103
+    보건복지대학: 00112
+    간호대학: 00159
+    약학대학: 00121
+    과학기술대학: 00124
+    미래융합대학: 00126
+    자유전공학부: 00142
+    스미스교양대학: 07752
+    문화예술대학: 00136
+    스미스학부대학: 70202
+  -->
+  <COLG_CD value="00126"/>
+  
+  <!-- FCLT_CD , 학부(과) -->
+  <!--
+  
+  -->
+  <FCLT_CD value="00160"/>
+  
+  <!-- MJR_CD , 전공 -->
+  <!--
+  
+  -->
+  <MJR_CD value=""/>
+  
+  <!-- SBJT_CD , 교과목코드(명) -->
+  <SBJT_CD value=""/>
+  
+  <!-- EDUCUR_CORS_SHYS_CD , 학년 -->
+  <!--
+    ALL: 
+    1학년: 1
+    2학년: 2
+    3학년: 3
+    4학년: 4
+    5학년: 5
+    6학년: 6
+    7학년: 7
+    8학년: 8
+  -->
+  <EDUCUR_CORS_SHYS_CD value=""/>
+  
+  <!-- CPTN_DIV_CD , 이수구분 -->
+  <CPTN_DIV_CD value=""/>
+  
+  <!-- CTNCCH_FLD_DIV_CD , 알 수 없음 -->
+  <CTNCCH_FLD_DIV_CD value=""/>
+  
+  <!-- EMP_NO , 교강사코드 -->
+  <EMP_NO value=""/>
+  
+  <!-- DAY_CD , 요일 -->
+  <DAY_CD value=""/>
+  
+  <!-- LTTM_CD , 보강교시 -->
+  <LTTM_CD value=""/>
+  
+  <!-- SPC_CD , 학부/대학원구분 -->
+  <SPC_CD value=""/>
+  
+  <!-- KOR_SBJT_NM , 과목명 -->
+  <KOR_SBJT_NM value=""/>
+  
+  <!-- LANG_GUBUN , ? -->
+  <LANG_GUBUN value="K"/>
+  
+  <!-- CONC_SHTM_TN , ? -->
+  <CONC_SHTM_TN value=""/>
+  
+  <!-- LCTPT , 학점 -->
+  <LCTPT value=""/>
+  
+  <!-- LECT_NO , 강좌번호 -->
+  <LECT_NO value=""/>
+</rqM0_F0>

@@ -14,38 +14,39 @@
  *
  */
 import * as fs from "fs";
-import { xml2json } from "xml-js";
+import { js2xml, xml2json, xml2js } from "xml-js";
 
-const xmlPOST = `
-  <rqM0_F0 task="system.commonTask" action="comSelect" xda="academic.ac.ac03.ac03_20040305_m_M0_F0_xda" con="sudev">
-    <FCLT_GSCH_DIV_CD value="1"/>
-    <OPEN_YY value="2023"/>
-    <OPEN_SHTM_CD value="10"/>
-    <COLG_CD value="00126"/>
-    <FCLT_CD value="00160"/>
-    <MJR_CD value=""/>
-    <SBJT_CD value=""/>
-    <EDUCUR_CORS_SHYS_CD value=""/>
-    <CPTN_DIV_CD value=""/>
-    <CTNCCH_FLD_DIV_CD value=""/>     	
-    <EMP_NO value=""/>
-    <DAY_CD value=""/>
-    <LTTM_CD value=""/>
-    <SPC_CD value=""/>
-    <KOR_SBJT_NM value=""/>
-    <LANG_GUBUN value="K"/>
-    <CONC_SHTM_TN value=""/>
-    <LCTPT value=""/>
-    <LECT_NO value=""/>
-  </rqM0_F0>
-`;
+const settings = {
+  FILE_NAME: "컴퓨터공학부",
+  COLG_CD: "00126",
+  FCLT_CD: "00160",
+};
+
+const baseXML = fs.readFileSync("./request/xml/base.xml", "utf-8");
+
+let rawJSON = xml2js(baseXML);
+
+for (let index in rawJSON.elements[0].elements) {
+  if (rawJSON.elements[0].elements[index].type === "element") {
+    if (rawJSON.elements[0].elements[index].name === "COLG_CD") {
+      rawJSON.elements[0].elements[index].attributes.value =
+        settings["COLG_CD"];
+    }
+    if (rawJSON.elements[0].elements[index].name === "FCLT_CD") {
+      rawJSON.elements[0].elements[index].attributes.value =
+        settings["FCLT_CD"];
+    }
+  }
+}
+
+const settingXML = js2xml(rawJSON);
 
 const getResponse = async () => {
   const response = await fetch(
     "https://suwings.syu.ac.kr/websquare/engine/proworks/callServletService.jsp",
     {
       method: "POST",
-      body: xmlPOST,
+      body: settingXML,
       headers: { "Content-Type": "application/xml; charset=UTF-8" },
     }
   );
@@ -59,13 +60,18 @@ const getResponse = async () => {
   const rawXML = await response.text();
   const rawJSON = xml2json(rawXML);
 
-  fs.writeFile("network.xml", rawXML, (err) => {
-    if (err) {
-      console.log(err);
-    }
-  });
   fs.writeFile(
-    "network.json",
+    "./response/xml/" + settings["FILE_NAME"] + ".xml",
+    rawXML,
+    (err) => {
+      if (err) {
+        console.log(err);
+      }
+    }
+  );
+
+  fs.writeFile(
+    "./response/json/" + settings["FILE_NAME"] + ".json",
     JSON.stringify(JSON.parse(rawJSON), null, 2),
     (err) => {
       if (err) {
